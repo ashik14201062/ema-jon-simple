@@ -1,10 +1,11 @@
 import React from 'react';
+import { useAuth } from '../Login/UseAuth';
 
 
 
 const Cart = (props) => {
     const cart = props.cart ;
-    //const user =useContext(UserContext)
+    const auth = useAuth()
 
     //const total = cart.reduce((total,prd)=> total + prd.price, 0)
 
@@ -44,7 +45,7 @@ const Cart = (props) => {
     {
         props.children
     }
-     <p>{}</p>
+ 
     
 
 

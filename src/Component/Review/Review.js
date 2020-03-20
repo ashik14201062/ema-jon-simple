@@ -5,6 +5,8 @@ import ReviewItem from '../ReviewItem/ReviewItem';
 import {removeFromDatabaseCart} from '../../utilities/databaseManager';
 import Cart from '../Cart/Cart';
 import happyImage from '../../images/giphy.gif';
+import { Link } from 'react-router-dom';
+import { useAuth } from '../Login/UseAuth';
 
 
 const Review = () => {
@@ -13,12 +15,13 @@ const Review = () => {
 
      const [cart ,setCart] =  useState([]);
      const [orderPlace , setOderPlace] =useState();
+     const auth =useAuth();
 
      const handlePlaceOrdrt = ()=> {
          setCart([]);
          setOderPlace(true);
          processOrder();
-
+ 
      }
 
      const removeProduct =(productKey)=>{
@@ -63,13 +66,26 @@ const Review = () => {
                
             }
             {thankYou}
+{
+
+    !cart.length && <h1> Added  any thing  pleace <a href="/">keep shoping</a>  </h1>
+}
+
 
             </div>
             <div className="cart-container">
                 <Cart cart={cart}>
 
-
-                    <button onClick={handlePlaceOrdrt} className="main-button" > place order</button>
+                    <Link to ="/shipment">  
+                    
+                   { auth.user ?
+                    <button  className="main-button" > Order </button>
+                    :
+                    <button  className="main-button" > Log in </button>
+                    }
+                    
+                          </Link>
+                   
                 </Cart>
 
             </div>

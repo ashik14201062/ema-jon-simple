@@ -1,10 +1,15 @@
 import React from 'react';
 import logo  from '../../images/logo.png'
 import './Heder.css'
+import { useAuth } from '../Login/UseAuth';
+
 
 //import {useContext} from 'react'
 
 const Heder = () => {
+
+    const auth = useAuth();
+  // console.log(auth.user);
 
     //const user =useContext(UserContext)
     return (
@@ -14,7 +19,18 @@ const Heder = () => {
              <a href="/shop">Shop</a>
              <a href="/review">Review</a>
              <a href="/manage">Manage Information</a>
-    <span style={{color:'yellow'}}></span>
+            {
+                auth.user && <span style ={{color:'yellow'}}> {auth.user.name} </span>
+            
+            }
+            {
+                auth.user ?  <a href="/login">Sign out </a> :  <a href="/login">Sign in </a>    
+
+            }
+        
+    }
+    
+    
          </nav>
         </div>
     );

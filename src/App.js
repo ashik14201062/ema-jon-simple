@@ -14,7 +14,9 @@ import Manage from './Component/Manage/Manage';
 import Notfound from './Component/NotFound/Notfound';
 import Productdtaile from './Component/Productdtaile/Productdtaile';
 import Login from './Component/Login/Login';
-import {AuthContextProvider} from './Component/Login/UseAuth'
+import {AuthContextProvider, PrivateRoute} from './Component/Login/UseAuth'
+
+import Shipment from "./Component/Shipment/Shipment"
 
 
 
@@ -55,6 +57,11 @@ function App() {
 
               <Login></Login>
             </Route>
+            <PrivateRoute path= "/shipment">
+                  <Shipment></Shipment>
+
+            </PrivateRoute >
+
 
             <Route path="*" >
               <Notfound></Notfound>
